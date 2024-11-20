@@ -6,8 +6,8 @@ function App() {
   let [numAllowed, setNumAllowed] = useState(false);
   let [charAllowed, setCharAllowed] = useState(false);
 
-  
-  const [pass, setPass] = useState()
+  const [pass, setPass] = useState();
+
   const passGenerator = useCallback(() => {
     let str = "abcdefghijklmnopqrstuvxwyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let pass = "";
@@ -21,13 +21,11 @@ function App() {
     setPass(pass);
   },
   [length, numAllowed, charAllowed, setPass]);
-  
-          const passRef = useRef(null);
-  const copyPasstoClipboard = useCallback(() => {
+    const passRef = useRef(null);
+    const copyPasstoClipboard = useCallback(() => {
     passRef.current?.select();   //"Agar passRef ki current value exist krti hai (null nahi hai), toh uska select() method call krdo, otherwise kuch mat kro"
     passRef.current?.setSelectionRange(0 , 8); // just for value select hongi pass 8 se ziada nahi ho 
     window.navigator.clipboard.writeText(pass);
-
   }, [pass])
 
   useEffect(() => {
